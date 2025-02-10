@@ -22,9 +22,7 @@ import pedro.mylibrairy.model.User;
 import pedro.mylibrairy.repository.BookRepository;
 import pedro.mylibrairy.repository.UserRepository;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api/books")
