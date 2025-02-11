@@ -1,6 +1,6 @@
 package pedro.mylibrairy.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

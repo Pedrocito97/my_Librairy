@@ -40,11 +40,11 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource())) // ✅ Corrected CORS configuration
                 .csrf(csrf -> csrf.disable()) // ❌ Disable CSRF for testing
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**").permitAll() // Allow auth routes
-                        .anyRequest().authenticated() // Require authentication for all other routes
+                        .requestMatchers("/api/auth/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED) // ✅ Enable sessions
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 )
                 .formLogin().disable()
                 .httpBasic();
@@ -68,11 +68,11 @@ public class SecurityConfig {
         return new ProviderManager(List.of(authProvider));
     }
 
-    // ✅ ADD THIS MISSING CORS CONFIGURATION METHOD
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:5173"); // ✅ Ajoute l’URL du front-end
+        configuration.addAllowedOrigin("http://localhost:5173");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         configuration.setAllowCredentials(true);

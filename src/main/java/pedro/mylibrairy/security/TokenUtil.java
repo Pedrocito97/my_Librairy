@@ -10,6 +10,6 @@ public class TokenUtil {
     public static String extractUsername(String token) {
         byte[] decodedBytes = Base64.getDecoder().decode(token);
         String decodedString = new String(decodedBytes);
-        return decodedString.split(":")[0]; // On récupère le username
+        return decodedString.split(":")[0];
     }
 }

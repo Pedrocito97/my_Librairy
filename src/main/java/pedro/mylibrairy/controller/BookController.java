@@ -1,7 +1,7 @@
 package pedro.mylibrairy.controller;
 
 
-import jakarta.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.validation.annotation.Validated;
-import jakarta.validation.Valid;
 import pedro.mylibrairy.dto.BookDTO;
 import pedro.mylibrairy.model.Book;
 import pedro.mylibrairy.model.User;
@@ -38,19 +37,13 @@ public class BookController {
         this.userRepository = userRepository;
     }
 
-    // Convert Book entity to BookDTO before returning a response
+
     private BookDTO convertToDTO(Book book) {
         return new BookDTO(book.getId(), book.getTitle(), book.getAuthor(), book.getDescription(), book.getRating(), book.getCategory());
     }
 
-    /**
-     * Simplification de la sécurité avec une authentification basée sur les sessions
-     *
-     * 1. Un utilisateur doit être connecté via une session pour accéder aux livres.
-     * 2. Chaque livre est associé à l'utilisateur connecté.
-     */
 
-    // GET all books for the authenticated user
+
     @GetMapping
     public ResponseEntity<Page<BookDTO>> getAllBooks(@AuthenticationPrincipal UserDetails userDetails,
                                                      @RequestParam(defaultValue = "0") int page,

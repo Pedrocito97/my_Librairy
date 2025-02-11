@@ -35,7 +35,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    // ✅ Maintain bidirectional relationship
+
     public void addBook(Book book) {
         books.add(book);
         book.setUser(this);
@@ -46,7 +46,7 @@ public class User implements UserDetails {
         book.setUser(null);
     }
 
-    // Getters & Setters
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -59,7 +59,7 @@ public class User implements UserDetails {
     public Set<Book> getBooks() { return books; }
     public void setBooks(Set<Book> books) { this.books = books; }
 
-    // ✅ Properly implement UserDetails methods
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(); // No roles for now
